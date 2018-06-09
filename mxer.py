@@ -7,12 +7,10 @@ DEST_SERVER = '207.148.127.201'
 
 class Resolver:
     def resolve(self, request, handler):
-        print("got request {}".format(request))
         reply = request.reply()
         if request.q.qtype == 15:
             mxrr = RR.fromZone("{} IN MX 10 {}".format(request.q.qname, 'mail.pwned.com'))
             reply.add_answer(*mxrr)
-            #print('we got a mx look up, sending back our server, {}'.format(reply))
         elif request.q.qtype == 1 and request.q.qname == 'mail.pwned.com':
                arr = RR.fromZone("{} IN A {}".format('mail.pwned.com', DEST_SERVER))
                reply.add_answer(*arr)
