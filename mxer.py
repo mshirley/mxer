@@ -30,8 +30,8 @@ class Resolver:
 
 resolver = Resolver()
 servers = [
-    DNSServer(resolver, port=5053, address='localhost', tcp=True),
-    DNSServer(resolver, port=5053, address='localhost', tcp=False),
+    DNSServer(resolver, port=5053, address='0.0.0.0', tcp=True),
+    DNSServer(resolver, port=5053, address='0.0.0.0', tcp=False),
 ]
 
 if __name__ == '__main__':
