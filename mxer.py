@@ -1,6 +1,7 @@
 from dnslib import RR
 from dnslib.server import DNSServer, DNSRecord, RCODE
 import socket
+from time import sleep
 
 DEST_SERVER = '1.1.1.1'
 
