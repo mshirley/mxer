@@ -9,11 +9,11 @@ class Resolver:
     def resolve(self, request, handler):
         reply = request.reply()
         if request.q.qtype == 15:
-            mxrr = RR.fromZone("{} IN MX 10 {}".format(request.q.qname, 'mail.pwned.com'))
+            mxrr = RR.fromZone("{} IN MX 10 mail.{}".format(request.q.qname, request.q.qname))
             reply.add_answer(*mxrr)
-        elif request.q.qtype == 1 and request.q.qname == 'mail.pwned.com':
-               arr = RR.fromZone("{} IN A {}".format('mail.pwned.com', DEST_SERVER))
-               reply.add_answer(*arr)
+        elif request.q.qtype == 1 and "mail." in str(request.q.qname):
+            arr = RR.fromZone("{} IN A {}".format(request.q.qname, DEST_SERVER))
+            reply.add_answer(*arr)
         else:
             try:
                 if handler.protocol == 'udp':
