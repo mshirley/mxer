@@ -1,6 +1,3 @@
-from datetime import datetime
-from time import sleep
-
 from dnslib import RR
 from dnslib.server import DNSServer, DNSRecord, RCODE
 import socket
